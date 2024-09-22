@@ -1,6 +1,6 @@
 $mainColor: #22232c;
 $textColor: #c1c2c5;
-$mainFont: Roboto;
+$mainFont: 'Gilroy-Regular', sans-serif;
 
 $secondaryColor: rgba(12, 12, 12, 0.4);
 $secondaryColorHighlight: #33343F;
@@ -10,8 +10,38 @@ $secondaryColorDark: rgba(12, 12, 12, 0.8);
 $gridCols: 5;
 $gridRows: 5;
 $gridSize: 10.2vh;
-$gridGap: 2px;
-$containerSize: calc(#{$gridRows} * #{$gridSize + 0.22vh} + #{$gridRows} * #{$gridGap});
+$gridGap: 10px;
+$containerSize: calc(#{$gridRows} * #{$gridSize + 0.22vh} + #{$gridRows} * -2px);
+
+@font-face {
+  font-family: 'Gilroy-Bold';
+  src: local('Gilroy-Bold'), url(nui://ox_inventory/web/fonts/Gilroy-Bold.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Gilroy-Medium';
+  src: local('Gilroy-Medium'), url(nui://ox_inventory/web/fonts/Gilroy-Medium.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Gilroy-Regular';
+  src: local('Gilroy-Regular'), url(nui://ox_inventory/web/fonts/Gilroy-Regular.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Gilroy-Light';
+  src: local('Gilroy-Light'), url(nui://ox_inventory/web/fonts/Gilroy-Light.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Gilroy-Thin';
+  src: local('Gilroy-Thin'), url(nui://ox_inventory/web/fonts/Gilroy-Thin.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Gilroy-SemiBold';
+  src: local('Gilroy-SemiBold'), url(nui://ox_inventory/web/fonts/Gilroy-SemiBold.ttf) format('truetype');
+}
 
 body {
   margin: 0;
@@ -58,13 +88,12 @@ input[type='number']::-webkit-outer-spin-button {
 
 .context-menu-list {
   min-width: 200px;
-  background-color: $mainColor;
   color: $textColor;
   padding: 4px;
-  border-color: rgba(0, 0, 0, 0.2);
-  border-style: inset;
-  border-width: 1px;
-  border-radius: 4px;
+  border-radius: 3px;
+  background: #1b1d21;
+  border: 1px solid rgb(255 255 255 / 11%);
+  border-radius: 3px;
   outline: none;
   display: flex;
   flex-direction: column;
@@ -72,9 +101,10 @@ input[type='number']::-webkit-outer-spin-button {
 
 .context-menu-item  {
   padding: 8px;
-  border-radius: 4px;
+  border-radius: 3px;
   background-color: transparent;
   outline: none;
+  text-transform: uppercase;
   border: none;
   color: $textColor;
   display: flex;
@@ -84,7 +114,7 @@ input[type='number']::-webkit-outer-spin-button {
     transform: none;
   }
   &:hover {
-    background-color: $secondaryColorHighlight;
+    background: #1b1d21;
     cursor: pointer;
   }
 }
@@ -117,55 +147,84 @@ button:active {
 
 .inventory-wrapper {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100%;
 
-  gap: 20px;
+  background: rgba(20, 21, 24, 0.9);
+  gap: 40px;
+}
+
+.inventory-wrapper2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 67%; /* Reduced height from 73% to 70% */
+  background: #1b1d21;
+  border: 1px solid rgb(255 255 255 / 11%);
+  border-radius: 3px;
+  padding: 0px; /* Added padding to make it a bit smaller */
+}
+
+.ButtonRow{
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
 }
 
 .inventory-control {
   display: flex;
+  align-self: center;
 
   .inventory-control-wrapper {
     display: flex;
-    flex-direction: column;
-    gap: 20px;
+    flex-direction: row;
+    gap: 10px;
     justify-content: center;
     align-items: center;
+    margin-top: -35px; /* Adjust this value as needed */
+    background: #1b1d21;
+    border: 1px solid rgb(255 255 255 / 11%);
+    width: 100%;
+    height: calc(100% - 5px); /* Reduce height by 20px */
+    padding: 13px;
+    border-radius: 3px;
   }
 
   .inventory-control-input {
     transition: 200ms;
-    padding: 16px 8px;
+    padding: 5px 0px;
     border-radius: 2.5%;
     font-family: $mainFont;
-    font-size: 16px;
+    font-size: 18px;
     text-align: center;
     outline: none;
     border: none;
-    color: #fff;
-    background-color: $secondaryColor;
+    color: rgba(255, 255, 255, 0.5);
+    background-color: #ffffff00;
+    border: 0.5px solid rgba(255,255,255,.08);
+    width: 6vw;
+    border-radius: 3px;
     &:focus-within {
-      background-color: $secondaryColorDark;
+      background-color: #ffffff00;
     }
   }
 
   .inventory-control-button {
     font-size: 14px;
-    color: #fff;
-    background-color: $secondaryColor;
+    color: rgba(255, 255, 255, 1);
+    background-color: #0003;
+    border-radius: 3px;
+    border: 0.5px solid #ffffff15;
     transition: 200ms;
     padding: 12px 8px;
-    border-radius: 2.5%;
-    border: none;
     text-transform: uppercase;
-    font-family: $mainFont;
-    width: 100%;
-    font-weight: 500;
+    font-family: "Gilroy-Medium", sans-serif;
+    width: 7vw;
     &:hover {
-      background-color: $secondaryColorDark;
+      background-color: rgba(255, 255, 255, 0.05);
     }
   }
 }
@@ -255,55 +314,90 @@ button:active {
 
 // Dialog is used fro useful controls window
 
+//
 
 // inventory grids
 .inventory-grid-wrapper {
   display: flex;
   flex-direction: column;
-  gap: calc($gridGap * 2);
+  gap: 5px;
+  margin-left: -10px;
+  width: 100%;
+  height: calc(100% - 20px); /* Reduce height by 20px */
+  padding: 12px;
+  border-radius: 3px;
 }
+
+.inventory-grid-wrapper-user {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 100%;
+  height: calc(100% - 20px); /* Reduce height by 20px */
+  padding: 12px;
+  border-radius: 3px;
+}
+
 .inventory-grid-header-wrapper {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  p {
-    font-size: 16px;
-  }
+  align-items: flex-end;
+  padding: 10px; /* Increase padding to make the background bigger */
+  background: #0003;
+  border: 1px solid rgb(255 255 255 / 11%);
+  border-radius: 3px;
+}
+
+.inventory-grid-header-wrapper-user {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 10px; /* Increase padding to make the background bigger */
+  background: #0003;
+  border: 1px solid rgb(255 255 255 / 11%);
+  border-radius: 3px;
+}
+
+.inventory-grid-container-user {
+  display: grid;
+  grid-template-columns: repeat($gridCols, 120px);
+  grid-auto-rows: 120px;
+  gap: 2px;
+  overflow-y: scroll;
 }
 
 .inventory-grid-container {
   display: grid;
-  height: $containerSize;
-  grid-template-columns: repeat($gridCols, $gridSize);
-  grid-auto-rows: $gridSize + 0.22vh;
-  gap: $gridGap;
+  grid-template-columns: repeat($gridCols, 120px);
+  grid-auto-rows: 120px;
+  gap: 2px;
   overflow-y: scroll;
 }
 
 // inventory slots
 .inventory-slot {
-  background-color: $secondaryColor;
+  background-color: #0003;
   background-repeat: no-repeat;
   background-position: center;
-  border-radius: 2.5%;
   image-rendering: -webkit-optimize-contrast;
   position: relative;
-  background-size: 7vh;
-  color: $textColor;
-  border-color: rgba(0, 0, 0, 0.2);
-  border-style: inset;
-  border-width: 1px;
+  background-size: 8.5vh;
+  color: rgba(255, 255, 255, 0.65);
+  border-radius: 3px;
+  border: 0.5px solid #ffffff15;
 }
 
 .inventory-slot-label-box {
-  background-color: $mainColor;
-  color: $textColor;
+  background-color: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.65);
   text-align: center;
-  border-bottom-left-radius: 0.25vh;
-  border-bottom-right-radius: 0.25vh;
-  border-top-color: rgba(0, 0, 0, 0.2);
-  border-top-style: inset;
-  border-top-width: 1px;
+  height: 13px;
+}
+
+.inventory-slot-label-box-no {
+  display: none;
 }
 
 .inventory-slot-label-text {
@@ -312,20 +406,24 @@ button:active {
   overflow: hidden;
   text-overflow: ellipsis;
   padding: 2px 3px;
-  font-weight: 400;
-  font-family: $mainFont;
-  font-size: 12px;
+  font-family: 'Gilroy-Light', sans-serif;
+  font-size: 10px;
+  font-weight: bold;
 }
 
 .inventory-slot-number {
-  background-color: white;
-  color: black;
-  height: 12px;
-  border-top-left-radius: 0.25vh;
-  border-bottom-right-radius: 0.25vh;
+  background-color: #1b1d21;
+  color: #fff;
+  height: 15px;
+  width: 15px;
   padding: 3px;
   font-size: 12px;
-  font-family: $mainFont;
+  font-family: 'Gilroy-SemiBold', sans-serif;
+  left: 97px;
+  text-align: center;
+  top: 0;
+  position: absolute;
+  border-radius: 3px;
 }
 
 .item-slot-wrapper {
@@ -350,10 +448,13 @@ button:active {
 }
 
 .item-slot-info-wrapper {
+  background-color: #ffffff0d;
+  border-radius: 3px;
+  color: #fff;
   display: flex;
   flex-direction: row;
   align-self: flex-end;
-  padding: 3px;
+  padding: 5px;
   gap: 3px;
   p {
     font-size: 12px;
@@ -387,20 +488,20 @@ button:active {
 .tooltip-wrapper {
   pointer-events: none;
   display: flex;
-  background-color: $mainColor;
   width: 200px;
   padding: 8px;
   flex-direction: column;
   min-width: 200px;
-  color: $textColor;
-  font-family: $mainFont;
-  border-radius: 4px;
+  color: rgb(193, 194, 197);
+  font-family: 'Gilroy-Regular', sans-serif;
   border-color: rgba(0, 0, 0, 0.2);
-  border-style: inset;
-  border-width: 1px;
+  border-radius: 3px;
+  background: #1b1d21;
+  border: 1px solid rgb(255 255 255 / 11%);
   p {
     font-size: 12px;
     font-weight: 400;
+    text-transform: uppercase;
   }
 }
 
@@ -412,6 +513,7 @@ button:active {
   p {
     font-size: 15px;
     font-weight: 400;
+    text-transform: uppercase;
   }
 }
 
@@ -449,15 +551,29 @@ button:active {
   align-items: center;
   gap: 2px;
   justify-content: center;
-  width: 100%;
+  width: auto; /* Change width to auto */
+  max-width: 90%; /* Optional: set a max-width to prevent it from being too wide */
   position: absolute;
   bottom: 2vh;
+  left: 34%; /* Center horizontally */
+  padding: 5px;
+  background: #1b1d21;
+  border: 1px solid rgb(255 255 255 / 11%);
+  border-radius: 3px;
 }
 
 .hotbar-item-slot {
-  @extend .inventory-slot;
-  width: $gridSize;
-  height: $gridSize;
+  background-color: #0003;
+  background-repeat: no-repeat;
+  background-position: center;
+  image-rendering: -webkit-optimize-contrast;
+  position: relative;
+  background-size: 8.5vh;
+  color: rgba(255, 255, 255, 0.65);
+  border-radius: 3px;
+  border: 0.5px solid #ffffff15;
+  width: 118px;
+  height: 120px;
 }
 
 .hotbar-slot-header-wrapper {
@@ -484,7 +600,7 @@ button:active {
 .item-notification-action-box {
   width: 100%;
   color: $textColor;
-  background-color: $secondaryColor;
+  background-color: #0003;
   text-transform: uppercase;
   text-align: center;
   border-top-left-radius: 0.25vh;
@@ -498,23 +614,32 @@ button:active {
 }
 
 .item-notification-item-box {
-  @extend .inventory-slot;
-  height: $gridSize;
-  width: $gridSize;
+  background-color: #0003;
+  background-repeat: no-repeat;
+  background-position: center;
+  image-rendering: -webkit-optimize-contrast;
+  position: relative;
+  background-size: 8.5vh;
+  color: rgba(255, 255, 255, 0.65);
+  border-radius: 3px;
+  border: 0.5px solid #ffffff15;
+  width: 120px;
+  height: 120px;
 }
 
 .durability-bar {
-  background: rgba(0, 0, 0, 0.5);
+  background: #0003;
   height: 3px;
   overflow: hidden;
 }
 
 .weight-bar {
-  background: rgba(0, 0, 0, 0.4);
-  border: 1px inset rgba(0, 0, 0, 0.1);
-  height: 0.8vh;
-  border-radius: 5%;
+  background: #0003;
+  border: 0px solid rgba(255, 255, 255, 0.2);
+  height: 1.75vh;
   overflow: hidden;
+  flex: 1;
+  border-radius: 3px;
 }
 
 .transition-fade-enter {
@@ -552,3 +677,154 @@ button:active {
   transform: translateY(200px);
   transition: all 200ms;
 }
+
+.RegularSlots{
+  display: grid;
+  height: calc(52.1vh + 10px);
+  grid-template-columns: repeat(5,95px);
+  grid-auto-rows: 95px;
+  gap: 10px;
+  margin-left: 26.5vw;
+}
+
+.WeightText {
+  font-size: 11px;
+  font-family: "Gilroy-Light", sans-serif;
+  color: white; /* Ensure the text is visible on the progress bar */
+  text-transform: uppercase;
+  text-align: right;
+  width: 98%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.LabelText {
+  font-size: 25px;
+  font-family: "Gilroy-Light", sans-serif;
+  padding-right: 10px;
+  color: #fff; /* Ensure the color is consistent */
+  font-weight: bold; /* Ensure bold is applied */
+  text-transform: uppercase;
+}
+
+.HotSlotLabel
+{
+  position: absolute;
+  bottom: 34.4vh;
+  font-size: 21px;
+  font-family: "Gilroy-Medium", sans-serif;
+}
+
+.iconWrapper {
+  display: inline-flex; /* Use flexbox for easier vertical alignment */
+  align-items: center; /* Vertically center items */
+  justify-content: center; /* Horizontally center items */
+  background-color: #1b1d21;
+  padding: 6px;
+  border-radius: 5px;
+  margin-right: 12px;
+  width: 20px; /* Width of the rectangle */
+  height: 20px; /* Height of the rectangle */
+}
+
+.iconWrapper2 {
+  display: inline-flex; /* Use flexbox for easier vertical alignment */
+  align-items: center; /* Vertically center items */
+  justify-content: center; /* Horizontally center items */
+  background-color: #1b1d21;
+  padding: 6px;
+  border-radius: 5px;
+  margin-right: 12px;
+  width: 25px; /* Width of the rectangle */
+  height: 25px; /* Height of the rectangle */
+}
+
+.iconWrapper svg {
+  font-size: 15px; /* Adjust the size of the icon */
+}
+
+.WeightBarWrap
+  {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 4px; /* Increase padding to make the background bigger */
+    background: #1b1d21;
+    border: 1px solid rgb(255 255 255 / 11%);
+    border-radius: 3px;
+  }
+
+.WeightBarWrap2
+{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 4px; /* Increase padding to make the background bigger */
+  background: #1b1d21;
+  border: 1px solid rgb(255 255 255 / 11%);
+  border-radius: 3px;
+}
+
+.LabelName{
+  display: flex;
+  align-items: center;
+  width: 26.5vw;
+  font-size: 25px;
+  font-family: 'Gilroy-Regular',sans-serif;
+  padding-left: 6px;
+}
+
+@media screen and (max-width: 1700px) {
+  .RegularSlots {
+    margin-left: 32.5vw;
+  }
+  .LabelName{
+    width: 32.5vw;
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  .RegularSlots {
+    grid-template-columns: repeat(5,65px);
+    grid-auto-rows: 65px;
+    margin-left: 31.5vw;
+  }
+
+  .LabelName {
+    width: 31.5vw;
+  }
+
+  .inventory-grid-container{
+    grid-template-columns: repeat(5, 65px);
+    grid-auto-rows: 65px;
+  }
+
+  .inventory-slot-number{
+    height: 7px;
+    width: 7px;
+    font-size: 6px;
+  }
+}
+
+@media screen and (min-width: 2500px) {
+  .RegularSlots {
+    margin-left: 20.5vw;
+  }
+  .LabelName{
+    width: 20.5vw;
+  }
+}
+
+@media screen and (min-width: 3400px) {
+  .RegularSlots {
+    margin-left: 15vw;
+  }
+  .LabelName{
+    width: 15vw;
+  }
+}
+
+

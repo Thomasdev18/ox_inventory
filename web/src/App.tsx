@@ -19,8 +19,8 @@ debugData([
       leftInventory: {
         id: 'test',
         type: 'player',
-        slots: 50,
-        label: 'Bob Smith',
+        slots: 44,
+        label: 'Rose Scott',
         weight: 3000,
         maxWeight: 5000,
         items: [
@@ -63,7 +63,7 @@ debugData([
         id: 'shop',
         type: 'crafting',
         slots: 5000,
-        label: 'Bob Smith',
+        label: 'BAKKEN',
         weight: 3000,
         maxWeight: 5000,
         items: [
